@@ -9,8 +9,10 @@ import java.util.concurrent.Callable;
 public final class App implements Callable<Integer> {
     private static final int SUCCESS_EXIT_CODE = 0;
     private static final int ERROR_EXIT_CODE = 1;
-    @Option(names = {"-V", "--version"}, versionHelp = true, description = "Print version information and exit.") private boolean versionInfoRequested;
-    @Option(names = {"-h", "--help"}, usageHelp = true, description = "Show this help message and exit.") private boolean usageHelpRequested;
+    @Option(names = {"-V", "--version"}, versionHelp = true, description = "Print version information and exit.")
+    private boolean versionInfoRequested;
+    @Option(names = {"-h", "--help"}, usageHelp = true, description = "Show this help message and exit.")
+    private boolean usageHelpRequested;
 /*    @CommandLine.Option(names = {"-f", "--format"}, defaultValue = "stylish", paramLabel = "format", description = "output format [default: stylish]")*/
     @Option(names = {"-f", "--format"}, defaultValue = "stylish", paramLabel = "format", description = "output format [default: ${DEFAULT-VALUE}]")
     private String formatName;
