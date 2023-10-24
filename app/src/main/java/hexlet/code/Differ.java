@@ -45,9 +45,9 @@ public class Differ {
             }
         } else {
             if (!(data1.containsKey(key))) {
-//                differList.add(new NodeName(NodeStatus.ADDED, key, valueMap2, null));
+
             } else {
-//                differList.add(new NodeName(NodeStatus.REMOVED, key, valueMap1, null));
+
             }
         }
     }
