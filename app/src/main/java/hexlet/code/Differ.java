@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Differ {
+    static List<String> diffList = new ArrayList<>();
     public static String generate(String filePath1, String filePath2, String formatName) throws Exception {
 //        String str1 = "/mnt/d/VICTOR/HEXLET/java-project-71/file1.json";
 //        String filePath1 = "/home/kvv/PROJECTS/java-project-71/file1.json";
@@ -19,11 +20,36 @@ public class Differ {
 //        Set<String> allKeys = new LinkedHashSet<>();
         allKeys.addAll(map1.keySet());
         allKeys.addAll(map2.keySet());
-        LinkedHashMap<String, String> UnsortedResult =new LinkedHashMap<>();
+//        allKeys.forEach(k -> diffList.add(Differ.differOfMap(map1, map2, k)));
+        for (String key : allKeys) {
+            differOfMap(map1, map2, key);
+        }
+/*        LinkedHashMap<String, String> UnsortedResult = new LinkedHashMap<>();
         Map<String, Object> mapAll = new HashMap<>(map1);
         mapAll.putAll(map2);
-        mapAll.forEach((k2, v2) -> UnsortedResult.put(k2, Differ.valueOfMap(map1, map2, k2, v2)));
+        mapAll.forEach((k2, v2) -> UnsortedResult.put(k2, Differ.valueOfMap(map1, map2, k2, v2)));*/
+
         return "!";
+    }
+
+    public static void differOfMap(Map<String, Object> data1, Map<String, Object> data2, String key) {
+        String ret = null;
+        Object valueMap1 = data1.get(key);
+        Object valueMap2 = data2.get(key);
+        if (data1.containsKey(key) && data2.containsKey(key)) {
+            if (Objects.equals(valueMap1, valueMap2)) {
+                diffList.add("  " + key + ": " + (String)valueMap2);
+            } else {
+                diffList.add("- " + key + ": " + (String)valueMap1);
+                diffList.add("+ " + key + ": " + (String)valueMap2);
+            }
+        } else {
+            if (!(data1.containsKey(key))) {
+//                differList.add(new NodeName(NodeStatus.ADDED, key, valueMap2, null));
+            } else {
+//                differList.add(new NodeName(NodeStatus.REMOVED, key, valueMap1, null));
+            }
+        }
     }
 
     public static Map<String, Object> getMap(String FilePath) throws Exception {

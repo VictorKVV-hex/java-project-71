@@ -10,7 +10,6 @@ build
 bin
 .project*
 .classpath
-.idea/
-.factorypath
-out/
-/src/main/resources
+**/.idea/
+**/out/
+/app/src/main/resources
