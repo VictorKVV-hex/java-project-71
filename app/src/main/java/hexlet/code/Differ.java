@@ -17,37 +17,31 @@ public class Differ {
         Map<String, Object> map1 = getMap(filePath1);
         Map<String, Object> map2 = getMap(filePath2);
         Set<String> allKeys = new TreeSet<>();
-//        Set<String> allKeys = new LinkedHashSet<>();
         allKeys.addAll(map1.keySet());
         allKeys.addAll(map2.keySet());
 //        allKeys.forEach(k -> diffList.add(Differ.differOfMap(map1, map2, k)));
         for (String key : allKeys) {
             differOfMap(map1, map2, key);
         }
-/*        LinkedHashMap<String, String> UnsortedResult = new LinkedHashMap<>();
-        Map<String, Object> mapAll = new HashMap<>(map1);
-        mapAll.putAll(map2);
-        mapAll.forEach((k2, v2) -> UnsortedResult.put(k2, Differ.valueOfMap(map1, map2, k2, v2)));*/
-
-        return "!";
+        return String.join("", diffList);
     }
 
     public static void differOfMap(Map<String, Object> data1, Map<String, Object> data2, String key) {
-        String ret = null;
         Object valueMap1 = data1.get(key);
         Object valueMap2 = data2.get(key);
         if (data1.containsKey(key) && data2.containsKey(key)) {
             if (Objects.equals(valueMap1, valueMap2)) {
-                diffList.add("  " + key + ": " + (String)valueMap2);
+//                diffList.add("  " + key + ": " + (String)valueMap2);
+                diffList.add(String.format("  %s: %s\n", key, valueMap2));
             } else {
-                diffList.add("- " + key + ": " + (String)valueMap1);
-                diffList.add("+ " + key + ": " + (String)valueMap2);
+                diffList.add(String.format("- %s: %s\n", key, valueMap1));
+                diffList.add(String.format("+ %s: %s\n", key, valueMap2));
             }
         } else {
             if (!(data1.containsKey(key))) {
-
+                diffList.add(String.format("+ %s: %s\n", key, valueMap2));
             } else {
-
+                diffList.add(String.format("- %s: %s\n", key, valueMap1));
             }
         }
     }
@@ -69,23 +63,4 @@ public class Differ {
         return map;
     }
 
-    public static String valueOfMap(Map<String, Object> data1, Map<String, Object> data2, String key, Object value) {
-        String Ret = null;
-        boolean isEquals = false;
-        boolean isKey1Exists = data1.containsKey(key);
-        boolean isKey2Exists = data2.containsKey(key);
-        if (isKey1Exists && isKey2Exists) {
-            isEquals = data1.get(key).equals(data2.get(key));
-        }
-        if (!isKey1Exists && isKey2Exists) {
-            Ret = "added";
-        } else if (isKey1Exists && !isKey2Exists) {
-            Ret = "deleted";
-        } else if (isKey1Exists && isKey2Exists && !isEquals) {
-            Ret = "changed";
-        } else if (isKey1Exists && isKey2Exists && isEquals) {
-            Ret = "unchanged";
-        }
-        return Ret;
-    }
 }

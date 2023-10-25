@@ -23,7 +23,6 @@ public final class App implements Callable<Integer> {
     private String filePath2;
 
     public static void main(String[] args) {
-        System.out.println("Hello World111111111111111");
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
 
@@ -38,9 +37,6 @@ public final class App implements Callable<Integer> {
             System.err.println(e.getMessage());
             return ERROR_EXIT_CODE;
         }
-
         return SUCCESS_EXIT_CODE;
     }
-/*        return null;
-    }*/
 }
