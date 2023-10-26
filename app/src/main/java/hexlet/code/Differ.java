@@ -3,7 +3,12 @@ package hexlet.code;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.Objects;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -46,11 +51,11 @@ public class Differ {
         }
     }
 
-    public static Map<String, Object> getMap(String FilePath) throws Exception {
-        Path testFilePath = Paths.get(FilePath);
+    public static Map<String, Object> getMap(String filePath) throws Exception {
+        Path testFilePath = Paths.get(filePath);
         Path fileName = testFilePath.getFileName();
         // Формируем абсолютный путь, если filePath будет содержать относительный путь, то мы всегда будет работать с абсолютным
-        Path path = Paths.get(FilePath).toAbsolutePath().normalize();
+        Path path = Paths.get(filePath).toAbsolutePath().normalize();
         // Проверяем существование файла
         if (!Files.exists(path)) {
             throw new Exception("File '" + path + "' does not exist");

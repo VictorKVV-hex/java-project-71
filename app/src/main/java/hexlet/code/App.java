@@ -14,7 +14,8 @@ public final class App implements Callable<Integer> {
     @Option(names = {"-h", "--help"}, usageHelp = true, description = "Show this help message and exit.")
     private boolean usageHelpRequested;
 /*    @CommandLine.Option(names = {"-f", "--format"}, defaultValue = "stylish", paramLabel = "format", description = "output format [default: stylish]")*/
-    @Option(names = {"-f", "--format"}, defaultValue = "stylish", paramLabel = "format", description = "output format [default: ${DEFAULT-VALUE}]")
+    @Option(names = {"-f", "--format"}, defaultValue = "stylish", paramLabel = "format",
+            description = "output format [default: ${DEFAULT-VALUE}]")
     private String formatName;
 
     @CommandLine.Parameters(paramLabel = "filepath1", index = "0", description = "path to first file")
