@@ -28,7 +28,7 @@ public class Differ {
         for (String key : allKeys) {
             differOfMap(map1, map2, key);
         }
-        return String.join("", diffList);
+        return String.join("\n", diffList);
     }
 
     public static void differOfMap(Map<String, Object> data1, Map<String, Object> data2, String key) {
@@ -37,16 +37,16 @@ public class Differ {
         if (data1.containsKey(key) && data2.containsKey(key)) {
             if (Objects.equals(valueMap1, valueMap2)) {
 //                diffList.add("  " + key + ": " + (String)valueMap2);
-                diffList.add(String.format("  %s: %s\n", key, valueMap2));
+                diffList.add(String.format("  %s: %s", key, valueMap2));
             } else {
-                diffList.add(String.format("- %s: %s\n", key, valueMap1));
-                diffList.add(String.format("+ %s: %s\n", key, valueMap2));
+                diffList.add(String.format("- %s: %s", key, valueMap1));
+                diffList.add(String.format("+ %s: %s", key, valueMap2));
             }
         } else {
             if (!(data1.containsKey(key))) {
-                diffList.add(String.format("+ %s: %s\n", key, valueMap2));
+                diffList.add(String.format("+ %s: %s", key, valueMap2));
             } else {
-                diffList.add(String.format("- %s: %s\n", key, valueMap1));
+                diffList.add(String.format("- %s: %s", key, valueMap1));
             }
         }
     }
