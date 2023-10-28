@@ -18,7 +18,7 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build
+          gradle-version: 8.3
           build-root-directory: app
       - run: .app/gradlew test
       - name: Publish code coverage
