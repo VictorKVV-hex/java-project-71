@@ -26,7 +26,7 @@ public class TestDiffer {
         String result = "- follow: false\n"
                 + "- host: hexlet.io\n"
                 + "- proxy: 123.234.53.22\n"
-                + "- timeout: 50";
+                + "- timeout: 501";
         assertEquals(result, actual, "Files did not match");
     }
 
