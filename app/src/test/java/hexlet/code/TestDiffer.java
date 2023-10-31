@@ -7,8 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestDiffer {
     private final String filePath1 = "src/test/resources/file1.json";
     private final String filePath2 = "src/test/resources/file2.json";
-    private final String fileEmpty = "src/test/resources/fileEmpty" +
-            ".json";
+    private final String fileEmpty = "src/test/resources/fileEmpty.json";
 
     @Test
     public void testGenerate() throws Exception {
