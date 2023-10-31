@@ -20,7 +20,7 @@ public class TestDiffer {
                 + "+ verbose: true";
         assertEquals(result, actual, "Files did not match");
     }
-/*    @Test
+    @Test
     public void testGenerateEmpty() throws Exception {
         String actual = Differ.generate(filePath1, fileEmpty, null);
         String result = "- follow: false\n"
@@ -35,5 +35,5 @@ public class TestDiffer {
         String actual = Differ.generate(fileEmpty, fileEmpty, null);
         String result = "";
         assertEquals(result, actual, "Files did not match");
-    }*/
+    }
 }

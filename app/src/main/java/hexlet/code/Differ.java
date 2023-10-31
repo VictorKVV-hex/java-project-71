@@ -19,6 +19,7 @@ public class Differ {
     public static String generate(String filePath1, String filePath2, String formatName) throws Exception {
 //        String str1 = "/mnt/d/VICTOR/HEXLET/java-project-71/file1.json";
 //        String filePath1 = "/home/kvv/PROJECTS/java-project-71/file1.json";
+        diffList.clear();
         Map<String, Object> map1 = getMap(filePath1);
         Map<String, Object> map2 = getMap(filePath2);
         Set<String> allKeys = new TreeSet<>();
