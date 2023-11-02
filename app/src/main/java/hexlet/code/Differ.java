@@ -1,27 +1,28 @@
 package hexlet.code;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.Objects;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import static hexlet.code.Parser.parser;
 
 public class Differ {
     static List<String> diffList = new ArrayList<>();
     public static String generate(String filePath1, String filePath2, String formatName) throws Exception {
 //        String str1 = "/mnt/d/VICTOR/HEXLET/java-project-71/file1.json";
 //        String filePath1 = "/home/kvv/PROJECTS/java-project-71/file1.json";
+        if (formatName == null) {
+            formatName = "yml";
+        }
         diffList.clear();
-        Map<String, Object> map1 = getMap(filePath1);
-        Map<String, Object> map2 = getMap(filePath2);
+        Map<String, Object> map1 = getMap(filePath1, formatName);
+        Map<String, Object> map2 = getMap(filePath2, formatName);
         Set<String> allKeys = new TreeSet<>();
         allKeys.addAll(map1.keySet());
         allKeys.addAll(map2.keySet());
@@ -52,7 +53,7 @@ public class Differ {
         }
     }
 
-    public static Map<String, Object> getMap(String filePath) throws Exception {
+    public static Map<String, Object> getMap(String filePath, String formatName) throws Exception {
         Path testFilePath = Paths.get(filePath);
         Path fileName = testFilePath.getFileName();
         // Формируем абсолютный путь, если filePath будет содержать относительный путь,
@@ -62,12 +63,11 @@ public class Differ {
         if (!Files.exists(path)) {
             throw new Exception("File '" + path + "' does not exist");
         }
-        // Читаем файл
-        String content = Files.readString(path);
+        String content = Files.readString(path); // Читаем файл
         ObjectMapper objectMapper = new ObjectMapper();
         Map<String, Object> map = objectMapper.readValue(content, new TypeReference<Map<String, Object>>() {
         });
-        return map;
+        return parser(content, formatName);
     }
 
 }
