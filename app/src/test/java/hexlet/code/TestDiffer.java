@@ -39,7 +39,7 @@ public class TestDiffer {
     }
     @Test
     public void testGenerateYml() throws Exception {
-        String actual = Differ.generate(filePath1, filePath2, "json");
+        String actual = Differ.generate(filePath1, filePath2, "yml");
         String result = "- follow: false\n"
                 + "  host: hexlet.io\n"
                 + "- proxy: 123.234.53.22\n"
