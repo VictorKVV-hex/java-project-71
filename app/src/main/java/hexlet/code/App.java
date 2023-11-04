@@ -13,7 +13,7 @@ public final class App implements Callable<Integer> {
     private boolean versionInfoRequested;
     @Option(names = {"-h", "--help"}, usageHelp = true, description = "Show this help message and exit.")
     private boolean usageHelpRequested;
-    @Option(names = {"-f", "--format"}, defaultValue = "stylish", paramLabel = "format",
+    @Option(names = {"-f", "--format"}, defaultValue = "json", paramLabel = "format",
             description = "output format [default: ${DEFAULT-VALUE}]")
     private String formatName;
 
