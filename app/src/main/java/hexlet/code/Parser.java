@@ -22,7 +22,7 @@ public class Parser {
             map = objectMapper.readValue(content, new TypeReference<Map<String, Object>>() {
             });
         } else {
-            throw new IllegalArgumentException("Wrong extension - " + extension );
+            throw new IllegalArgumentException("Wrong extension - " + extension);
         }
         return map;
     }
