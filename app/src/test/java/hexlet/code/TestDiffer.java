@@ -1,7 +1,13 @@
 package hexlet.code;
 
 import org.junit.jupiter.api.Test;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 
 public class TestDiffer {
@@ -47,5 +53,14 @@ public class TestDiffer {
                 + "+ timeout: 20\n"
                 + "+ verbose: true";
         assertEquals(result, actual, "Files did not match");
+    }
+    @Test
+    public  void testGetPath() {
+        String path = "src/test/resources/file1.json";
+        String pathNotExist = "src/test/resources/fileNotExist.json";
+        boolean isFile1 = Files.exists(Path.of(path));
+        boolean isFileNotExist = Files.exists(Path.of(pathNotExist));
+        assertTrue(isFile1);
+        assertFalse(isFileNotExist);
     }
 }

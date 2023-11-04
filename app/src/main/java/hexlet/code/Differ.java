@@ -1,6 +1,8 @@
 package hexlet.code;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -54,6 +56,11 @@ public class Differ {
     }
 
     public static Map<String, Object> getMap(String filePath, String formatName) throws Exception {
+        String content = Files.readString(getPath(filePath)); // Читаем файл
+        return parser(content, formatName);
+    }
+
+    public static Path getPath(String filePath) throws Exception {
         Path testFilePath = Paths.get(filePath);
         Path fileName = testFilePath.getFileName();
         // Формируем абсолютный путь, если filePath будет содержать относительный путь,
@@ -63,11 +70,7 @@ public class Differ {
         if (!Files.exists(path)) {
             throw new Exception("File '" + path + "' does not exist");
         }
-        String content = Files.readString(path); // Читаем файл
-        ObjectMapper objectMapper = new ObjectMapper();
-        Map<String, Object> map = objectMapper.readValue(content, new TypeReference<Map<String, Object>>() {
-        });
-        return parser(content, formatName);
+        return path;
     }
 
 }
