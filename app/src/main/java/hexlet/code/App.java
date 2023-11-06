@@ -13,9 +13,9 @@ public final class App implements Callable<Integer> {
     private boolean versionInfoRequested;
     @Option(names = {"-h", "--help"}, usageHelp = true, description = "Show this help message and exit.")
     private boolean usageHelpRequested;
-    @Option(names = {"-f", "--format"}, defaultValue = "json", paramLabel = "format",
+    @Option(names = {"-f", "--format"}, defaultValue = "stylish", paramLabel = "format",
             description = "output format [default: ${DEFAULT-VALUE}]")
-    private String formatName;
+    private String formatter;
 
     @CommandLine.Parameters(paramLabel = "filepath1", index = "0", description = "path to first file")
     private String filePath1;
@@ -25,13 +25,12 @@ public final class App implements Callable<Integer> {
     public static void main(String[] args) {
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
-
     }
 
     @Override
     public Integer call() throws Exception {
         try {
-            String formattedDiff = Differ.generate(filePath1, filePath2, formatName);
+            String formattedDiff = Differ.generate(filePath1, filePath2, formatter);
             System.out.println(formattedDiff);
         } catch (Exception e) {
             System.err.println(e.getMessage());
