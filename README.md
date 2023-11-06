@@ -7,3 +7,6 @@
 
 ### Аскинема с файлов yml
 [![asciicast](https://asciinema.org/a/KTkHnx6NMYV8xVlWk5g7idV4U.svg)](https://asciinema.org/a/KTkHnx6NMYV8xVlWk5g7idV4U)
+
+### Аскинема с файлов c вложенными данными
+[![asciicast](https://asciinema.org/a/dvlupUdZCsMbAITBK7rcIDSHQ.svg)](https://asciinema.org/a/dvlupUdZCsMbAITBK7rcIDSHQ)
