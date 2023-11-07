@@ -19,6 +19,8 @@ public class TestDiffer {
     private final String filePathYml2 = "src/test/resources/file2.yml";
     private final String filePathNestedJson1 = "src/test/resources/fileNested1.json";
     private final String filePathNestedJson2 = "src/test/resources/fileNested2.json";
+    private final String filePathNestedYml1 = "src/test/resources/fileNested1.yml";
+    private final String filePathNestedYml2 = "src/test/resources/fileNested2.yml";
 
     @Test
     public void testGenerateJson() throws Exception {
@@ -76,6 +78,14 @@ public class TestDiffer {
         String filePath = "src/test/resources/fileNestedResult.json";
         String result = Files.readString(getPath(filePath)).replace("\r", ""); // Читаем файл
 //        String result = Files.lines(getPath(filePath)).reduce("", (a, b) -> a.trim() + b + "\n").trim();
+        assertEquals(result, actual, "Files did not match");
+    }
+    @Test
+    public void testGenerateNestedYml() throws Exception {
+        String actual = Differ.generate(filePathNestedYml1, filePathNestedYml2, "yml");
+        String filePath = "src/test/resources/fileNestedResult.yml";
+//        String result = Files.readString(getPath(filePath)).replace("\r", ""); // Читаем файл
+        String result = "   " + Files.lines(getPath(filePath)).reduce("", (a, b) -> a + b + "\n").trim();
         assertEquals(result, actual, "Files did not match");
     }
 }
