@@ -88,4 +88,11 @@ public class TestDiffer {
         String result = "   " + Files.lines(getPath(filePath)).reduce("", (a, b) -> a + b + "\n").trim();
         assertEquals(result, actual, "Files did not match");
     }
+    @Test
+    public void testGeneratePlainJson() throws Exception {
+        String actual = Differ.generate(filePathNestedJson1, filePathNestedJson2, "json");
+        String filePath = "src/test/resources/fileResultPlain.json";
+        String result = "   " + Files.lines(getPath(filePath)).reduce("", (a, b) -> a + b + "\n").trim();
+        assertEquals(result, actual, "Files did not match");
+    }
 }
