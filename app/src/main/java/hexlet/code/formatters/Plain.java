@@ -25,7 +25,7 @@ public class Plain {
         if (data1.containsKey(key) && data2.containsKey(key)) {
             if (Objects.equals(valueMap1, valueMap2)) {
 //                diffList.add("  " + key + ": " + (String)valueMap2);
-                diffList.add(String.format("   %s: %s", key, valueMap2));
+//                diffList.add(String.format("   %s: %s", key, valueMap2));
             } else {
                 diffList.add(String.valueOf(resultStr.append("Property ").append("'").append(key).append("' ").
                         append("was updated. ").append("From ").append(valueMap1).
@@ -33,9 +33,15 @@ public class Plain {
             }
         } else {
             if (!(data1.containsKey(key))) {
-                diffList.add(String.format(" + %s: %s", key, valueMap2));
+//                diffList.add(String.format(" + %s: %s", key, valueMap2));
+/*                diffList.add(String.valueOf(resultStr.append("Property ").append("'").append(key).
+                        append("'").append(" was added with value: ").append(valueMap1).append('\n')));*/
+                diffList.add("Property '" + key + "' was added with value: '" + valueMap1 +"'\n");
             } else {
-                diffList.add(String.format(" - %s: %s", key, valueMap1));
+//                diffList.add(String.format(" - %s: %s", key, valueMap1));
+/*                diffList.add(String.valueOf(resultStr.append("Property ").append("'").
+                        append(key).append("'").append(" was removed").append('\n')));*/
+                diffList.add("Property '" + key + "' was removed\n");
             }
         }
     }
