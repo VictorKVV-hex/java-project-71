@@ -8,6 +8,8 @@ import java.util.TreeSet;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import static hexlet.code.Formatter.formatter;
 import static hexlet.code.Parser.parser;
 import static hexlet.code.formatters.Stylish.stylish;
 
@@ -23,35 +25,10 @@ public class Differ {
         allKeys.addAll(map1.keySet());
         allKeys.addAll(map2.keySet());
 //        allKeys.forEach(k -> diffList.add(Differ.differOfMap(map1, map2, k)));
-/*        diffList.clear();
-        diffList.add("{");
-        for (String key : allKeys) {
-            differOfMap(map1, map2, key);
-        }
-        diffList.add("}");*/
-        diffList = stylish(allKeys, map1, map2, extension);
+        diffList = formatter(allKeys, map1, map2, extension, formatName);
+//        diffList = stylish(allKeys, map1, map2, extension);
         return String.join("\n", diffList);
     }
-
-/*    public static void differOfMap(Map<String, Object> data1, Map<String, Object> data2, String key) {
-        Object valueMap1 = data1.get(key);
-        Object valueMap2 = data2.get(key);
-        if (data1.containsKey(key) && data2.containsKey(key)) {
-            if (Objects.equals(valueMap1, valueMap2)) {
-//                diffList.add("  " + key + ": " + (String)valueMap2);
-                diffList.add(String.format("   %s: %s", key, valueMap2));
-            } else {
-                diffList.add(String.format(" - %s: %s", key, valueMap1));
-                diffList.add(String.format(" + %s: %s", key, valueMap2));
-            }
-        } else {
-            if (!(data1.containsKey(key))) {
-                diffList.add(String.format(" + %s: %s", key, valueMap2));
-            } else {
-                diffList.add(String.format(" - %s: %s", key, valueMap1));
-            }
-        }
-    }*/
 
     public static Map<String, Object> getMap(String filePath, String formatName) throws Exception {
         String content = Files.readString(getPath(filePath)); // Читаем файл
