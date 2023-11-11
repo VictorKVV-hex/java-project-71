@@ -10,3 +10,6 @@
 
 ### Аскинема с файлов c вложенными данными
 [![asciicast](https://asciinema.org/a/dvlupUdZCsMbAITBK7rcIDSHQ.svg)](https://asciinema.org/a/dvlupUdZCsMbAITBK7rcIDSHQ)
+
+### Аскинема с плоским форматом
+[![asciicast](https://asciinema.org/a/IyLIk3Vp4M0dst2RyIWOJqp0y.svg)](https://asciinema.org/a/IyLIk3Vp4M0dst2RyIWOJqp0y)

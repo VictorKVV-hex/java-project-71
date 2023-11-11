@@ -11,7 +11,6 @@ import java.nio.file.Paths;
 
 import static hexlet.code.Formatter.formatter;
 import static hexlet.code.Parser.parser;
-import static hexlet.code.formatters.Stylish.stylish;
 
 public class Differ {
     static List<String> diffList = new ArrayList<>();

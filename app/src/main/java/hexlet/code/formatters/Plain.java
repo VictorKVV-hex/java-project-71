@@ -1,6 +1,10 @@
 package hexlet.code.formatters;
 
-import java.util.*;
+import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Plain {
     static List<String> diffList = new ArrayList<>();
@@ -19,26 +23,23 @@ public class Plain {
         String valTwo = typeValue(data2.get(key));
         StringBuilder resultStr = null;
         if (data1.containsKey(key) && data2.containsKey(key)) {
-            if (Objects.equals(valueMap1, valueMap2)) {
-//                diffList.add("  " + key + ": " + (String)valueMap2);
-//                diffList.add(String.format("   %s: %s", key, valueMap2));
-            } else {
+            if (!Objects.equals(valueMap1, valueMap2)) {
 /*                diffList.add(String.valueOf(resultStr.append("Property ").append("'").append(key).append("' ").
                         append("was updated. ").append("From ").append(valueMap1).
                         append(" to ").append(valueMap2).append('\n')));*/
-                diffList.add("Property '" + key + "' was updated. From " + valOne + " to " + valTwo + "\n");
+                diffList.add("Property '" + key + "' was updated. From " + valOne + " to " + valTwo);
             }
         } else {
             if (!(data1.containsKey(key))) {
 //                diffList.add(String.format(" + %s: %s", key, valueMap2));
 /*                diffList.add(String.valueOf(resultStr.append("Property ").append("'").append(key).
                         append("'").append(" was added with value: ").append(valueMap1).append('\n')));*/
-                diffList.add("Property '" + key + "' was added with value: " + valOne + "\n");
+                diffList.add("Property '" + key + "' was added with value: " + valTwo);
             } else {
 //                diffList.add(String.format(" - %s: %s", key, valueMap1));
 /*                diffList.add(String.valueOf(resultStr.append("Property ").append("'").
                         append(key).append("'").append(" was removed").append('\n')));*/
-                diffList.add("Property '" + key + "' was removed\n");
+                diffList.add("Property '" + key + "' was removed");
             }
         }
     }
