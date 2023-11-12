@@ -1,7 +1,5 @@
 package hexlet.code;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -13,7 +11,7 @@ import static hexlet.code.Formatter.formatter;
 import static hexlet.code.Parser.parser;
 
 public class Differ {
-    static List<String> diffList = new ArrayList<>();
+//    static List<String> diffList = new ArrayList<>();
     public static String generate(String filePath1, String filePath2, String formatName) throws Exception {
 //        String str1 = "/mnt/d/VICTOR/HEXLET/java-project-71/file1.json";
 //        String filePath1 = "/home/kvv/PROJECTS/java-project-71/file1.json";
@@ -24,9 +22,9 @@ public class Differ {
         allKeys.addAll(map1.keySet());
         allKeys.addAll(map2.keySet());
 //        allKeys.forEach(k -> diffList.add(Differ.differOfMap(map1, map2, k)));
-        diffList = formatter(allKeys, map1, map2, extension, formatName);
-//        diffList = stylish(allKeys, map1, map2, extension);
-        return String.join("\n", diffList);
+//        diffList = formatter(allKeys, map1, map2, extension, formatName);
+//        return String.join("\n", diffList);
+        return formatter(allKeys, map1, map2, extension, formatName);
     }
 
     public static Map<String, Object> getMap(String filePath, String formatName) throws Exception {

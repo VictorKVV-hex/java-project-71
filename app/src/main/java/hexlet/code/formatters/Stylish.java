@@ -9,7 +9,7 @@ import java.util.Set;
 public class Stylish {
     static List<String> diffList = new ArrayList<>();
 
-    public static List<String> stylish(Set<String> allKeys, Map<String, Object> map1, Map<String,
+    public static String stylish(Set<String> allKeys, Map<String, Object> map1, Map<String,
             Object> map2, String extension) {
         diffList.clear();
         if (extension.equals("json")) {
@@ -21,7 +21,7 @@ public class Stylish {
         if (extension.equals("json")) {
             diffList.add("}");
         }
-        return diffList;
+        return String.join("\n", diffList);
     }
 
     public static void differOfMap(Map<String, Object> data1, Map<String, Object> data2, String key) {

@@ -2,12 +2,11 @@ package hexlet.code;
 
 import hexlet.code.formatters.Stylish;
 import hexlet.code.formatters.Plain;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class Formatter {
-    public static List<String> formatter(Set<String> allKeys, Map<String, Object> map1, Map<String, Object> map2,
+    public static String formatter(Set<String> allKeys, Map<String, Object> map1, Map<String, Object> map2,
                                          String extension, String format) {
         return switch (format.toLowerCase()) {
             case ("stylish") -> Stylish.stylish(allKeys, map1, map2, extension);
