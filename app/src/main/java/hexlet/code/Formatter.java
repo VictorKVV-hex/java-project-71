@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.formatters.Json;
 import hexlet.code.formatters.Stylish;
 import hexlet.code.formatters.Plain;
 import java.util.Map;
@@ -11,6 +12,7 @@ public class Formatter {
         return switch (format.toLowerCase()) {
             case ("stylish") -> Stylish.stylish(allKeys, map1, map2, extension);
             case ("plain") -> Plain.plain(allKeys, map1, map2, extension);
+            case ("json") -> Json.json(allKeys, map1, map2, extension);
             default -> throw new IllegalArgumentException(
                     String.format("Unsupported format. Supported: %s, %s", "stylish", "plain")
             );
