@@ -52,8 +52,20 @@ public class Json {
                         .collect(Collectors.joining(",")) + "]";
             }
         } else if (value.contains("{")) {
-            if (object instanceof Map<?,?>) {
-                return  value;
+            if (object instanceof Map<?, ?>) {
+                Map<?, ?> map = (Map<?, ?>) object;
+                return "{" + map.entrySet().stream()
+//                        .map(entry -> entry.getKey() + ":" + entry.getValue())
+                        .map(entry -> {String ret;
+                            if (entry.getValue() instanceof String) {
+                            ret = "\"" +entry.getKey() + "\":" + "\"" + entry.getValue() + "\"";
+                        } else {
+                            ret =  "\"" +entry.getKey() + "\":" + entry.getValue();
+                        }
+                        return ret;
+                        })
+                        .collect(Collectors.joining(", ")) + "}";
+//                return  value;
             }
             ArrayList<String> list = (ArrayList<String>) object;
             if (list.get(0) instanceof String) {

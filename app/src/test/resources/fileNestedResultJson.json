@@ -10,8 +10,8 @@
 {"type":"UPDATED", "key":"numbers2", "value":[2, 3, 4, 5], "updatedValue":[22, 33, 44, 55]},
 {"type":"REMOVED", "key":"numbers3", "value":[3, 4, 5]},
 {"type":"ADDED", "key":"numbers4", "value":[4, 5, 6]},
-{"type":"ADDED", "key":"obj1", "value":{nestedKey:value,isNested:true}},
+{"type":"ADDED", "key":"obj1", "value":{"nestedKey":"value", "isNested":true}},
 {"type":"UPDATED", "key":"setting1", "value":"Some value", "updatedValue":"Another value"},
-{"type":"UPDATED", "key":"setting2", "value":200,"updatedValue":300},
-{"type":"UPDATED", "key":"setting3", "value":true,"updatedValue":"none"}
+{"type":"UPDATED", "key":"setting2", "value":200, "updatedValue":300},
+{"type":"UPDATED", "key":"setting3", "value":true, "updatedValue":"none"}
 }
