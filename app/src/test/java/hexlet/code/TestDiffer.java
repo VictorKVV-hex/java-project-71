@@ -77,14 +77,12 @@ public class TestDiffer {
         String actual = Differ.generate(filePathNestedJson1, filePathNestedJson2, "stylish");
         String filePath = "src/test/resources/fileNestedResult.json";
         String result = Files.readString(getPath(filePath)).replace("\r", ""); // Читаем файл
-//        String result = Files.lines(getPath(filePath)).reduce("", (a, b) -> a.trim() + b + "\n").trim();
         assertEquals(result, actual, "Files did not match");
     }
     @Test
     public void testGenerateNestedYml() throws Exception {
         String actual = Differ.generate(filePathNestedYml1, filePathNestedYml2, "stylish");
         String filePath = "src/test/resources/fileNestedResult.yml";
-//        String result = Files.readString(getPath(filePath)).replace("\r", ""); // Читаем файл
         String result = "   " + Files.lines(getPath(filePath)).reduce("", (a, b) -> a + b + "\n").trim();
         assertEquals(result, actual, "Files did not match");
     }

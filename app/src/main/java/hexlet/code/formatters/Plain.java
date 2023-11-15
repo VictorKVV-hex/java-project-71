@@ -25,21 +25,12 @@ public class Plain {
         StringBuilder resultStr = null;
         if (data1.containsKey(key) && data2.containsKey(key)) {
             if (!Objects.equals(valueMap1, valueMap2)) {
-/*                diffList.add(String.valueOf(resultStr.append("Property ").append("'").append(key).append("' ").
-                        append("was updated. ").append("From ").append(valueMap1).
-                        append(" to ").append(valueMap2).append('\n')));*/
                 diffList.add("Property '" + key + "' was updated. From " + valOne + " to " + valTwo);
             }
         } else {
             if (!(data1.containsKey(key))) {
-//                diffList.add(String.format(" + %s: %s", key, valueMap2));
-/*                diffList.add(String.valueOf(resultStr.append("Property ").append("'").append(key).
-                        append("'").append(" was added with value: ").append(valueMap1).append('\n')));*/
                 diffList.add("Property '" + key + "' was added with value: " + valTwo);
             } else {
-//                diffList.add(String.format(" - %s: %s", key, valueMap1));
-/*                diffList.add(String.valueOf(resultStr.append("Property ").append("'").
-                        append(key).append("'").append(" was removed").append('\n')));*/
                 diffList.add("Property '" + key + "' was removed");
             }
         }

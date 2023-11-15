@@ -29,7 +29,6 @@ public class Stylish {
         Object valueMap2 = data2.get(key);
         if (data1.containsKey(key) && data2.containsKey(key)) {
             if (Objects.equals(valueMap1, valueMap2)) {
-//                diffList.add("  " + key + ": " + (String)valueMap2);
                 diffList.add(String.format("   %s: %s", key, valueMap2));
             } else {
                 diffList.add(String.format(" - %s: %s", key, valueMap1));

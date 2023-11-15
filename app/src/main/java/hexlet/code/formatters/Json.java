@@ -21,7 +21,6 @@ public class Json {
         Object valueMap2 = data2.get(key);
         String valOne = typeValue(data1.get(key));
         String valTwo = typeValue(data2.get(key));
-//        StringBuilder resultStr = null;
         if (data1.containsKey(key) && data2.containsKey(key)) {
             if (Objects.equals(valueMap1, valueMap2)) {
                 diffList.add("{\"type\":\"UNCHANGED\", \"key\":\"" + key + "\", \"value\":" + valTwo + "}");
