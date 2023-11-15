@@ -1,8 +1,10 @@
 package hexlet.code.formatters;
 
-import hexlet.code.Node;
-
-import java.util.*;
+import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Json {
@@ -25,7 +27,8 @@ public class Json {
             if (Objects.equals(valueMap1, valueMap2)) {
                 diffList.add("{\"type\":\"UNCHANGED\", \"key\":\"" + key + "\", \"value\":" + valTwo + "}");
             } else {
-                diffList.add("{\"type\":\"UPDATED\", \"key\":\"" + key + "\", \"value\":" + valOne + ", \"updatedValue\":" + valTwo + "}");
+                diffList.add("{\"type\":\"UPDATED\", \"key\":\"" + key + "\", \"value\":"
+                        + valOne + ", \"updatedValue\":" + valTwo + "}");
 //                diffList.add(String.valueOf(new Node("UPDATED", key, valueMap1, valueMap2)));
             }
         } else {
@@ -40,7 +43,7 @@ public class Json {
     private static String typeValue(Object object) {
         String value = String.valueOf(object);
         if (value.contains("[")) {
-            if (object instanceof Map<?,?>) {
+            if (object instanceof Map<?, ?>) {
                 return  value;
             }
             ArrayList<String> list = (ArrayList<String>) object;
@@ -55,13 +58,14 @@ public class Json {
                 Map<?, ?> map = (Map<?, ?>) object;
                 return "{" + map.entrySet().stream()
 //                        .map(entry -> entry.getKey() + ":" + entry.getValue())
-                        .map(entry -> {String ret;
+                        .map(entry -> {
+                            String ret;
                             if (entry.getValue() instanceof String) {
-                            ret = "\"" +entry.getKey() + "\":" + "\"" + entry.getValue() + "\"";
-                        } else {
-                            ret =  "\"" +entry.getKey() + "\":" + entry.getValue();
-                        }
-                        return ret;
+                                ret = "\"" + entry.getKey() + "\":" + "\"" + entry.getValue() + "\"";
+                            } else {
+                                ret =  "\"" + entry.getKey() + "\":" + entry.getValue();
+                            }
+                            return ret;
                         })
                         .collect(Collectors.joining(", ")) + "}";
 //                return  value;
