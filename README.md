@@ -13,6 +13,3 @@
 
 ### Аскинема с плоским форматом
 [![asciicast](https://asciinema.org/a/IyLIk3Vp4M0dst2RyIWOJqp0y.svg)](https://asciinema.org/a/IyLIk3Vp4M0dst2RyIWOJqp0y)
-
-### Аскинема с форматом json
-[![asciicast](https://asciinema.org/a/ETX1FoQVbe8mnLThCdkZbQZj8.svg)](https://asciinema.org/a/ETX1FoQVbe8mnLThCdkZbQZj8)
