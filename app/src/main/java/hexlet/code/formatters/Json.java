@@ -57,6 +57,7 @@ public class Json {
             if (object instanceof Map<?, ?>) {
                 Map<?, ?> map = (Map<?, ?>) object;
                 return "{" + map.entrySet().stream()
+//                        .map(entry -> entry.getKey() + ":" + entry.getValue())
                         .map(entry -> {
                             String ret;
                             if (entry.getValue() instanceof String) {
@@ -67,6 +68,7 @@ public class Json {
                             return ret;
                         })
                         .collect(Collectors.joining(", ")) + "}";
+//                return  value;
             }
             ArrayList<String> list = (ArrayList<String>) object;
             if (list.get(0) instanceof String) {
