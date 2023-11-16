@@ -26,12 +26,12 @@ public class TestDiffer {
     public void testGenerateJson() throws Exception {
         String actual = Differ.generate(filePath1, filePath2, "stylish");
         String result = "{\n"
-                + " - follow: false\n"
-                + "   host: hexlet.io\n"
-                + " - proxy: 123.234.53.22\n"
-                + " - timeout: 50\n"
-                + " + timeout: 20\n"
-                + " + verbose: true\n"
+                + "  - follow: false\n"
+                + "    host: hexlet.io\n"
+                + "  - proxy: 123.234.53.22\n"
+                + "  - timeout: 50\n"
+                + "  + timeout: 20\n"
+                + "  + verbose: true\n"
                 + "}";
         assertEquals(result, actual, "Files did not match");
     }
@@ -39,10 +39,10 @@ public class TestDiffer {
     public void testGenerateEmptyJson() throws Exception {
         String actual = Differ.generate(filePath1, fileEmpty, "stylish");
         String result = "{\n"
-                + " - follow: false\n"
-                + " - host: hexlet.io\n"
-                + " - proxy: 123.234.53.22\n"
-                + " - timeout: 50\n"
+                + "  - follow: false\n"
+                + "  - host: hexlet.io\n"
+                + "  - proxy: 123.234.53.22\n"
+                + "  - timeout: 50\n"
                 + "}";
         assertEquals(result, actual, "Files did not match");
     }
@@ -55,12 +55,14 @@ public class TestDiffer {
     @Test
     public void testGenerateYml() throws Exception {
         String actual = Differ.generate(filePathYml1, filePathYml2, "stylish");
-        String result = " - follow: false\n"
-                + "   host: hexlet.io\n"
-                + " - proxy: 123.234.53.22\n"
-                + " - timeout: 50\n"
-                + " + timeout: 20\n"
-                + " + verbose: true";
+        String result = "{\n"
+                + "  - follow: false\n"
+                + "    host: hexlet.io\n"
+                + "  - proxy: 123.234.53.22\n"
+                + "  - timeout: 50\n"
+                + "  + timeout: 20\n"
+                + "  + verbose: true\n"
+                + "}";
         assertEquals(result, actual, "Files did not match");
     }
     @Test
@@ -83,7 +85,7 @@ public class TestDiffer {
     public void testGenerateNestedYml() throws Exception {
         String actual = Differ.generate(filePathNestedYml1, filePathNestedYml2, "stylish");
         String filePath = "src/test/resources/fileNestedResult.yml";
-        String result = "   " + Files.lines(getPath(filePath)).reduce("", (a, b) -> a + b + "\n").trim();
+        String result = Files.lines(getPath(filePath)).reduce("", (a, b) -> a + b + "\n").trim();
         assertEquals(result, actual, "Files did not match");
     }
     @Test

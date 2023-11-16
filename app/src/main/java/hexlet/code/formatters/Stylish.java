@@ -12,15 +12,15 @@ public class Stylish {
     public static String stylish(Set<String> allKeys, Map<String, Object> map1, Map<String,
             Object> map2, String extension) {
         diffList.clear();
-        if (extension.equals("json")) {
-            diffList.add("{");
-        }
+
+        diffList.add("{");
+
         for (String key : allKeys) {
             differOfMap(map1, map2, key);
         }
-        if (extension.equals("json")) {
-            diffList.add("}");
-        }
+
+        diffList.add("}");
+
         return String.join("\n", diffList);
     }
 
