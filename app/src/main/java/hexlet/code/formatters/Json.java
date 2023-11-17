@@ -8,17 +8,18 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Json {
-    static List<String> diffList = new ArrayList<>();
+//    static List<String> diffList = new ArrayList<>();
 
     public static String json(Set<String> allKeys, Map<String, Object> map1, Map<String,
             Object> map2, String extension) {
+        List<String> diffList = new ArrayList<>();
         diffList.clear();
         for (String key : allKeys) {
-            differOfMap(map1, map2, key);
+            differOfMap(diffList, map1, map2, key);
         }
         return "[" + String.join(",", diffList) + "]";
     }
-    public static void differOfMap(Map<String, Object> data1, Map<String, Object> data2, String key) {
+    public static void differOfMap(List<String> diffList, Map<String, Object> data1, Map<String, Object> data2, String key) {
         Object valueMap1 = data1.get(key);
         Object valueMap2 = data2.get(key);
         String valOne = typeValue(data1.get(key));

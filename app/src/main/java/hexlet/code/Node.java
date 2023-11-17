@@ -1,4 +1,4 @@
-package hexlet.code;
+/*package hexlet.code;
 
 public class Node {
     private final String type;
@@ -25,4 +25,4 @@ public class Node {
         this.value = value;
         this.updatedValue = updatedValue;
     }
-}
+}*/
