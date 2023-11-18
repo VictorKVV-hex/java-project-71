@@ -14,7 +14,7 @@ public class Formatter {
             case ("plain") -> Plain.plain(allKeys, map1, map2, extension);
             case ("json") -> Json.json(allKeys, map1, map2, extension);
             default -> throw new IllegalArgumentException(
-                    String.format("Unsupported format. Supported: %s, %s", "stylish", "plain")
+                    String.format("Wrong format. Supported: %s, %s, %s", "stylish", "plain", "json")
             );
         };
     }

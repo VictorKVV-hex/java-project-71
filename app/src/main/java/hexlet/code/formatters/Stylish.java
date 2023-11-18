@@ -13,13 +13,10 @@ public class Stylish {
             Object> map2, String extension) {
         List<String> diffList = new ArrayList<>();
         diffList.clear();
-
         diffList.add("{");
-
         for (String key : allKeys) {
             differOfMap(diffList, map1, map2, key);
         }
-
         diffList.add("}");
 
         return String.join("\n", diffList);
