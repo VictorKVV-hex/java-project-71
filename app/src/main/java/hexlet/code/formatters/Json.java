@@ -19,7 +19,8 @@ public class Json {
         }
         return "[" + String.join(",", diffList) + "]";
     }
-    public static void differOfMap(List<String> diffList, Map<String, Object> data1, Map<String, Object> data2, String key) {
+    public static void differOfMap(List<String> diffList, Map<String, Object> data1,
+                                   Map<String, Object> data2, String key) {
         Object valueMap1 = data1.get(key);
         Object valueMap2 = data2.get(key);
         String valOne = typeValue(data1.get(key));
