@@ -13,11 +13,11 @@ public class Parser {
         ObjectMapper objectMapper;
         Map<String, Object> map;
 
-        if (extension.equals("yml")) {
+        if (extension.toLowerCase().equals("yml")) {
             objectMapper = new YAMLMapper();
             map = objectMapper.readValue(content, new TypeReference<>() {
             });
-        } else if (extension.equals("json")) {
+        } else if (extension.toLowerCase().equals("json")) {
             objectMapper = new ObjectMapper();
             map = objectMapper.readValue(content, new TypeReference<Map<String, Object>>() {
             });
