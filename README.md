@@ -3,6 +3,15 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/ca9ac5ee690a96a57955/maintainability)](https://codeclimate.com/github/VictorKVV-hex/java-project-71/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/ca9ac5ee690a96a57955/test_coverage)](https://codeclimate.com/github/VictorKVV-hex/java-project-71/test_coverage)
 
+## Описание проекта
+
+Вычислитель отличий – программа, определяющая разницу между двумя структурами данных. 
+
+Возможности утилиты:
+Поддержка входных форматов: yaml и json
+Генерация отчета в виде plain text, stylish и json
+
+### Сравнение плоских файлов (JSON)
 [![asciicast](https://asciinema.org/a/0WhkA8v7Q3OzKL9oLWxUtVwxb.svg)](https://asciinema.org/a/0WhkA8v7Q3OzKL9oLWxUtVwxb)
 
 ### Аскинема с файлов yml
