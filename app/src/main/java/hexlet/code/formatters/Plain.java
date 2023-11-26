@@ -1,24 +1,59 @@
 package hexlet.code.formatters;
 
-import java.util.Objects;
-import java.util.ArrayList;
+import hexlet.code.Node;
+
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+
+
 
 public class Plain {
 
 
-    public static String plain(Set<String> allKeys, Map<String, Object> map1, Map<String,
-            Object> map2, String extension) {
-        List<String> diffList = new ArrayList<>();
+    public static String plain(List<Node> diffList){
+/*        List<String> diffList = new ArrayList<>();
         diffList.clear();
         for (String key : allKeys) {
             differOfMap(diffList, map1, map2, key);
+        }*/
+
+        StringBuilder resultStr = new StringBuilder();
+
+        for (Node node : diffList) {
+            Object valOne = typeValue(node.getValue());
+            Object valTwo = typeValue(node.getUpdatedValue());
+
+            switch (node.getType()) {
+                case "UPDATED" -> /*resultStr.append("Property ").append("'").append(node.getKey()).append("' ").
+                        append("was updated. ").append("From ").append(valueMap1).
+                        append(" to ").append(valueMap2).append('\n');*/
+                resultStr.append("Property '" + node.getKey() + "' was updated. From " + valOne + " to " + valTwo).append('\n');
+                case "ADDED" -> /*resultStr.append("Property ").append("'").append(node.getKey()).
+                        append("'").append(" was added with value: ").append(valueMap1).append('\n');*/
+                resultStr.append("Property '" + node.getKey() + "' was added with value: " + valOne).append('\n');
+                case "REMOVED" -> /*resultStr.append("Property ").append("'").
+                        append(node.getKey()).append("'").append(" was removed").append('\n');*/
+                resultStr.append("Property '" + node.getKey() + "' was removed").append('\n');
+                case "UNCHANGED" -> resultStr.append("");
+                default -> throw new IllegalArgumentException(
+                        String.format("Unsupported status. Supported: %s, %s, %s, %s",
+                                "UNCHANGED", "UPDATED", "ADDED", "REMOVED"));
+            }
         }
-        return String.join("\n", diffList);
+//        return String.join("\n", diffList);
+        return resultStr.toString().trim();
     }
-    public static void differOfMap(List<String> diffList, Map<String, Object> data1,
+
+    public static Object typeValue(Object object) {
+        Object value = object;
+        if (object instanceof Map || object instanceof List) {
+            value = "[complex value]";
+        } else if (object instanceof String) {
+            value = "'" + object + "'";
+        }
+        return value;
+    }
+/*    public static void differOfMap(List<String> diffList, Map<String, Object> data1,
                                    Map<String, Object> data2, String key) {
         Object valueMap1 = data1.get(key);
         Object valueMap2 = data2.get(key);
@@ -37,14 +72,13 @@ public class Plain {
             }
         }
     }
-    private static String typeValue(Object object) {
+
+    public static Objects typeValue(Object object) {
         String value = String.valueOf(object);
         if (value.contains("[") || value.contains("{")) {
             return "[complex value]";
         } else if (object instanceof String) {
             return "'" + value + "'";
-        }
-        return value;
-
-    }
+        }return value;
+    }*/
 }

@@ -1,18 +1,18 @@
 package hexlet.code;
 
 import hexlet.code.formatters.Json;
-import hexlet.code.formatters.Stylish;
 import hexlet.code.formatters.Plain;
-import java.util.Map;
-import java.util.Set;
+import hexlet.code.formatters.Stylish;
+
+import java.io.IOException;
+import java.util.List;
 
 public class Formatter {
-    public static String formatter(Set<String> allKeys, Map<String, Object> map1, Map<String, Object> map2,
-                                         String extension, String format) {
+    public static String formatter(List<Node> diffList, String format) throws IOException {
         return switch (format.toLowerCase()) {
-            case ("stylish") -> Stylish.stylish(allKeys, map1, map2, extension);
-            case ("plain") -> Plain.plain(allKeys, map1, map2, extension);
-            case ("json") -> Json.json(allKeys, map1, map2, extension);
+            case ("stylish") -> Stylish.stylish(diffList);
+            case ("plain") -> Plain.plain(diffList);
+            case ("json") -> Json.json(diffList);
             default -> throw new IllegalArgumentException(
                     String.format("Wrong format. Supported: %s, %s, %s", "stylish", "plain", "json")
             );

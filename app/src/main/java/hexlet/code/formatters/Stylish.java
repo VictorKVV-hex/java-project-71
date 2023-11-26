@@ -1,25 +1,34 @@
 package hexlet.code.formatters;
 
-import java.util.Objects;
+import hexlet.code.Node;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Objects;
 
 public class Stylish {
 
 
-    public static String stylish(Set<String> allKeys, Map<String, Object> map1, Map<String,
-            Object> map2, String extension) {
+    public static String stylish(List<Node> differList) {
         List<String> diffList = new ArrayList<>();
-        diffList.clear();
-        diffList.add("{");
-        for (String key : allKeys) {
-            differOfMap(diffList, map1, map2, key);
-        }
-        diffList.add("}");
+        for (Node node : differList) {
+            switch (node.getType()) {
+                case "UNCHANGED" -> diffList.add(String.format("    %s: %s\n", node.getKey(), node.getValue()));
+                case "UPDATED" -> {
+                    diffList.add(String.format("  - %s: %s\n", node.getKey(), node.getValue()));
+                    diffList.add(String.format("  + %s: %s\n", node.getKey(), node.getUpdatedValue()));
+                }
+                case "ADDED" -> diffList.add(String.format("  + %s: %s\n", node.getKey(), node.getValue()));
+                case "REMOVED" -> diffList.add(String.format("  - %s: %s\n", node.getKey(), node.getValue()));
+                default -> throw new IllegalArgumentException(
+                        String.format("Unsupported status. Supported: %s, %s, %s, %s",
+                                "UNCHANGED", "UPDATED", "ADDED", "REMOVED"));
 
-        return String.join("\n", diffList);
+            }
+        }
+        String result = String.join("", diffList);
+        return String.format("{\n%s}", result);
     }
 
     public static void differOfMap(List<String> diffList, Map<String, Object> data1,

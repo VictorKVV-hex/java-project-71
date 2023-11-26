@@ -1,16 +1,21 @@
 package hexlet.code.formatters;
 
-import java.util.Objects;
-import java.util.ArrayList;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import hexlet.code.Node;
+
+import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Json {
 //    static List<String> diffList = new ArrayList<>();
 
-    public static String json(Set<String> allKeys, Map<String, Object> map1, Map<String,
+    public static String json(List<Node> differList) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(differList);
+
+    }
+
+    /*public static String json(Set<String> allKeys, Map<String, Object> map1, Map<String,
             Object> map2, String extension) {
         List<String> diffList = new ArrayList<>();
         diffList.clear();
@@ -42,7 +47,7 @@ public class Json {
         }
     }
 
-    private static String typeValue(Object object) {
+    static String typeValue(Object object) {
         String value = String.valueOf(object);
         if (value.contains("[")) {
             if (object instanceof Map<?, ?>) {
@@ -85,5 +90,5 @@ public class Json {
             return  value;
         }
         return value;
-    }
+    }*/
 }

@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -19,10 +20,11 @@ public class Differ {
         String extension = getExtension(filePath1);
         Map<String, Object> map1 = getMap(filePath1, extension);
         Map<String, Object> map2 = getMap(filePath2, extension);
-        Set<String> allKeys = new TreeSet<>();
+/*        Set<String> allKeys = new TreeSet<>();
         allKeys.addAll(map1.keySet());
-        allKeys.addAll(map2.keySet());
-        return formatter(allKeys, map1, map2, extension, formatName);
+        allKeys.addAll(map2.keySet());*/
+        List<Node> differList = TreeDiff.getDifferList(map1, map2);
+        return formatter(differList, formatName);
     }
 
     public static Map<String, Object> getMap(String filePath, String formatName) throws Exception {
