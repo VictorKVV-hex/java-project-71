@@ -10,7 +10,7 @@ import java.util.Map;
 public class Plain {
 
 
-    public static String plain(List<Node> diffList){
+    public static String plain(List<Node> diffList) {
 /*        List<String> diffList = new ArrayList<>();
         diffList.clear();
         for (String key : allKeys) {
@@ -24,16 +24,11 @@ public class Plain {
             Object valTwo = typeValue(node.getUpdatedValue());
 
             switch (node.getType()) {
-                case "UPDATED" -> /*resultStr.append("Property ").append("'").append(node.getKey()).append("' ").
-                        append("was updated. ").append("From ").append(valueMap1).
-                        append(" to ").append(valueMap2).append('\n');*/
-                resultStr.append("Property '" + node.getKey() + "' was updated. From " + valOne + " to " + valTwo).append('\n');
-                case "ADDED" -> /*resultStr.append("Property ").append("'").append(node.getKey()).
-                        append("'").append(" was added with value: ").append(valueMap1).append('\n');*/
-                resultStr.append("Property '" + node.getKey() + "' was added with value: " + valOne).append('\n');
-                case "REMOVED" -> /*resultStr.append("Property ").append("'").
-                        append(node.getKey()).append("'").append(" was removed").append('\n');*/
-                resultStr.append("Property '" + node.getKey() + "' was removed").append('\n');
+                case "UPDATED" -> resultStr.append("Property '" + node.getKey() + "' was updated. From "
+                        + valOne + " to " + valTwo).append('\n');
+                case "ADDED" -> resultStr.append("Property '" + node.getKey() + "' was added with value: "
+                        + valOne).append('\n');
+                case "REMOVED" -> resultStr.append("Property '" + node.getKey() + "' was removed").append('\n');
                 case "UNCHANGED" -> resultStr.append("");
                 default -> throw new IllegalArgumentException(
                         String.format("Unsupported status. Supported: %s, %s, %s, %s",

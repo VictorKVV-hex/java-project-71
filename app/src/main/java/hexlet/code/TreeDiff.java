@@ -1,7 +1,11 @@
 package hexlet.code;
 
-import java.util.*;
-
+import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeSet;
+import java.util.Objects;
 public class TreeDiff {
     private static final String UNCHANGED = "UNCHANGED";
     private static final String UPDATED = "UPDATED";
