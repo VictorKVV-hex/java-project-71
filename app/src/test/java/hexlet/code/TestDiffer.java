@@ -13,10 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class TestDiffer {
     private final String filePath1 = "src/test/fixtures/file1.json";
-    private final String filePath2 = "src/test/fixtures/file2.json";
     private final String fileEmpty = "src/test/fixtures/fileEmpty.json";
-    private final String filePathYml1 = "src/test/fixtures/file1.yml";
-    private final String filePathYml2 = "src/test/fixtures/file2.yml";
     private final String filePathNestedJson1 = "src/test/fixtures/fileNested1.json";
     private final String filePathNestedJson2 = "src/test/fixtures/fileNested2.json";
     private final String filePathNestedYml1 = "src/test/fixtures/fileNested1.yml";
@@ -24,15 +21,9 @@ public class TestDiffer {
 
     @Test
     public void testGenerateJson2Param() throws Exception {
-        String actual = Differ.generate(filePath1, filePath2);
-        String result = "{\n"
-                + "  - follow: false\n"
-                + "    host: hexlet.io\n"
-                + "  - proxy: 123.234.53.22\n"
-                + "  - timeout: 50\n"
-                + "  + timeout: 20\n"
-                + "  + verbose: true\n"
-                + "}";
+        String actual = Differ.generate(filePathNestedJson1, filePathNestedJson2, "stylish");
+        String filePath = "src/test/fixtures/fileNestedResult.json";
+        String result = Files.readString(getPath(filePath)).replace("\r", ""); // Читаем файл
         assertEquals(result, actual, "Files did not match");
     }
     @Test
