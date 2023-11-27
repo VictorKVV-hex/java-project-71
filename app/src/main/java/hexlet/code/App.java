@@ -4,7 +4,7 @@ import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import java.util.concurrent.Callable;
-@Command(name = "gendiff", mixinStandardHelpOptions = true, version = "auto help demo - picocli 3.0",
+@Command(name = "gendiff", version = "auto help demo - picocli 3.0",
         description = "Compares two configuration files and shows a difference.")
 public final class App implements Callable<Integer> {
     private static final int SUCCESS_EXIT_CODE = 0;
