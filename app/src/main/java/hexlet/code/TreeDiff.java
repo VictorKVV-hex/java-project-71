@@ -1,18 +1,14 @@
 package hexlet.code;
 
-import java.util.Set;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeSet;
-import java.util.Objects;
+import java.util.*;
+
 public class TreeDiff {
     private static final String UNCHANGED = "UNCHANGED";
     private static final String UPDATED = "UPDATED";
     private static final String ADDED = "ADDED";
     private static final String REMOVED = "REMOVED";
-    public static List<Node>  getDifferList(Map<String, Object> map1, Map<String, Object> map2) {
-        List<Node> diffList = new ArrayList<>();
+    public static List<Map<String,Object>>  getDifferList(Map<String, Object> map1, Map<String, Object> map2) {
+        List<Map<String,Object>> diffList = new ArrayList<>();
         diffList.clear();
         Set<String> allKeys = new TreeSet<>();
         allKeys.addAll(map1.keySet());
@@ -23,15 +19,24 @@ public class TreeDiff {
 
             if (map1.containsKey(key) && map2.containsKey(key)) {
                 if (Objects.equals(valueMap1, valueMap2)) {
-                    diffList.add(new Node(UNCHANGED, key, valueMap1, valueMap2));
+//                    diffList.add(new Node(UNCHANGED, key, valueMap1, valueMap2));
+/*                    var hM = new HashMap<String,Object>();
+                    hM.put("status", UNCHANGED);
+                    hM.put("key", key);
+                    hM.put("Value", valueMap1);
+                    hM.put("updatedValue", valueMap2);*/
+                    diffList.add(Map.of("status", UNCHANGED, "key", key,"Value", valueMap1, "updatedValue", valueMap2));
                 } else {
-                    diffList.add(new Node(UPDATED, key, valueMap1, valueMap2));
+//                    diffList.add(new Node(UPDATED, key, valueMap1, valueMap2));
+                    diffList.add(Map.of("status", UPDATED, "key", key,"Value", valueMap1, "updatedValue", valueMap2));
                 }
             } else {
                 if (!(map1.containsKey(key))) {
-                    diffList.add(new Node(ADDED, key, valueMap2, null));
+//                    diffList.add(new Node(ADDED, key, valueMap2, null));
+                    diffList.add(Map.of("status", ADDED, "key", key,"Value", valueMap1));
                 } else {
-                    diffList.add(new Node(REMOVED, key, valueMap1, null));
+//                    diffList.add(new Node(REMOVED, key, valueMap1, null));
+                    diffList.add(Map.of("status", REMOVED, "key", key,"Value", valueMap1));
                 }
             }
         }

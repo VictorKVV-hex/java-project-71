@@ -1,26 +1,28 @@
 package hexlet.code.formatters;
 
-import hexlet.code.Node;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Stylish {
 
-    public static String stylish(List<Node> differList) {
+    public static String stylish(List<Map<String,Object>> differList) {
         List<String> diffList = new ArrayList<>();
-        for (Node node : differList) {
-            switch (node.getType()) {
-                case "UNCHANGED" -> diffList.add(String.format("    %s: %s\n", node.getKey(), node.getValue()));
-                case "UPDATED" -> {
-                    diffList.add(String.format("  - %s: %s\n", node.getKey(), node.getValue()));
-                    diffList.add(String.format("  + %s: %s\n", node.getKey(), node.getUpdatedValue()));
-                }
-                case "ADDED" -> diffList.add(String.format("  + %s: %s\n", node.getKey(), node.getValue()));
-                case "REMOVED" -> diffList.add(String.format("  - %s: %s\n", node.getKey(), node.getValue()));
-                default -> throw new IllegalArgumentException(
+        for (var node : differList) {
+            Object status = node.get("status");
+            if (status.equals("UNCHANGED")) {
+                diffList.add(String.format("    %s: %s\n", node.get("key"), node.get("value")));
+            } else if (status.equals("UPDATED")) {
+                diffList.add(String.format("  - %s: %s\n", node.get("key"), node.get("value")));
+                diffList.add(String.format("  + %s: %s\n", node.get("key"), node.get("updatedValue")));
+            } else if (status.equals("ADDED")) {
+                diffList.add(String.format("  + %s: %s\n", node.get("key"), node.get("value")));
+            } else if (status.equals("REMOVED")) {
+                diffList.add(String.format("  - %s: %s\n", node.get("key"), node.get("value")));
+            } else {
+                throw new IllegalArgumentException(
                         String.format("Unsupported status. Supported: %s, %s, %s, %s",
                                 "UNCHANGED", "UPDATED", "ADDED", "REMOVED"));
-
             }
         }
         String result = String.join("", diffList);
