@@ -8,15 +8,17 @@ public class Stylish {
 
     public static String stylish(List<Map<String,Object>> differList) {
         List<String> diffList = new ArrayList<>();
-        for (var node : differList) {
+        for (Map<String,Object> node : differList) {
             Object status = node.get("status");
+            Object key = node.get("key");
+            Object value = node.get("value");
             if (status.equals("UNCHANGED")) {
                 diffList.add(String.format("    %s: %s\n", node.get("key"), node.get("value")));
             } else if (status.equals("UPDATED")) {
                 diffList.add(String.format("  - %s: %s\n", node.get("key"), node.get("value")));
                 diffList.add(String.format("  + %s: %s\n", node.get("key"), node.get("updatedValue")));
             } else if (status.equals("ADDED")) {
-                diffList.add(String.format("  + %s: %s\n", node.get("key"), node.get("value")));
+                diffList.add(String.format("  + %s: %s\n", node.get("key"), node.get("updatedValue")));
             } else if (status.equals("REMOVED")) {
                 diffList.add(String.format("  - %s: %s\n", node.get("key"), node.get("value")));
             } else {

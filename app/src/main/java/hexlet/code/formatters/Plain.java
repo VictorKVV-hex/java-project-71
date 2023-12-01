@@ -7,21 +7,25 @@ import java.util.Map;
 public class Plain {
 
 
-    public static String plain(List<Node> diffList) {
+    public static String plain(List<Map<String,Object>> diffList) {
         StringBuilder resultStr = new StringBuilder();
 
-        for (Node node : diffList) {
-            Object valOne = typeValue(node.getValue());
-            Object valTwo = typeValue(node.getUpdatedValue());
-
-            switch (node.getType()) {
-                case "UPDATED" -> resultStr.append("Property '" + node.getKey() + "' was updated. From "
+        for (var node : diffList) {
+            Object valOne = typeValue(node.get("value"));
+            Object valTwo = typeValue(node.get("updatedValue"));
+            Object status = node.get("status");
+            if (status.equals("UPDATED")) {
+                resultStr.append("Property '" + node.get("key") + "' was updated. From "
                         + valOne + " to " + valTwo).append('\n');
-                case "ADDED" -> resultStr.append("Property '" + node.getKey() + "' was added with value: "
+            } else if (status.equals("ADDED")) {
+                resultStr.append("Property '" + node.get("key") + "' was added with value: "
                         + valOne).append('\n');
-                case "REMOVED" -> resultStr.append("Property '" + node.getKey() + "' was removed").append('\n');
-                case "UNCHANGED" -> resultStr.append("");
-                default -> throw new IllegalArgumentException(
+            } else if (status.equals("REMOVED")) {
+                resultStr.append("Property '" + node.get("key") + "' was removed").append('\n');
+            } else if (status.equals("UNCHANGED")) {
+                resultStr.append("");
+            } else {
+                throw new IllegalArgumentException(
                         String.format("Unsupported status. Supported: %s, %s, %s, %s",
                                 "UNCHANGED", "UPDATED", "ADDED", "REMOVED"));
             }
