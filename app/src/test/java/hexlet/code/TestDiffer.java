@@ -83,8 +83,8 @@ public class TestDiffer {
     @Test
     public void testGenerateJsonJson() throws Exception {
         String actual = Differ.generate(filePathNestedJson1, filePathNestedJson2, "json");
-/*        String filePath = "src/test/fixtures/fileNestedResultJson.json";*/
-        String filePath = "src/test/fixtures/fileNestedResultJsonValueMap2.json";
+        String filePath = "src/test/fixtures/fileNestedResultJson.json";
+//        String filePath = "src/test/fixtures/fileNestedResultJsonValueMap2.json";
         String result = Files.lines(getPath(filePath)).reduce("", (a, b) -> a + b + "\n").trim();
         assertEquals(result, actual, "Files did not match");
     }

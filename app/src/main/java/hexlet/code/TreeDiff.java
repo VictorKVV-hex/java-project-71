@@ -41,9 +41,9 @@ public class TreeDiff {
         }
         return diffList;
     }
-    public static Map<String,Object> putHm(String Status, String key, Object valueMap1, Object valueMap2) {
-        var hM = new HashMap<String,Object>();
-        hM.put("status", Status);
+    public static Map<String,Object> putHm(String type, String key, Object valueMap1, Object valueMap2) {
+        var hM = new LinkedHashMap<String,Object>();
+        hM.put("type", type);
         hM.put("key", key);
         hM.put("value", valueMap1);
         hM.put("updatedValue", valueMap2);

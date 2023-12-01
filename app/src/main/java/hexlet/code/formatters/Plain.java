@@ -1,6 +1,5 @@
 package hexlet.code.formatters;
 
-import hexlet.code.Node;
 import java.util.List;
 import java.util.Map;
 
@@ -13,16 +12,16 @@ public class Plain {
         for (var node : diffList) {
             Object valOne = typeValue(node.get("value"));
             Object valTwo = typeValue(node.get("updatedValue"));
-            Object status = node.get("status");
-            if (status.equals("UPDATED")) {
+            Object type = node.get("type");
+            if (type.equals("UPDATED")) {
                 resultStr.append("Property '" + node.get("key") + "' was updated. From "
                         + valOne + " to " + valTwo).append('\n');
-            } else if (status.equals("ADDED")) {
+            } else if (type.equals("ADDED")) {
                 resultStr.append("Property '" + node.get("key") + "' was added with value: "
-                        + valOne).append('\n');
-            } else if (status.equals("REMOVED")) {
+                        + valTwo).append('\n');
+            } else if (type.equals("REMOVED")) {
                 resultStr.append("Property '" + node.get("key") + "' was removed").append('\n');
-            } else if (status.equals("UNCHANGED")) {
+            } else if (type.equals("UNCHANGED")) {
                 resultStr.append("");
             } else {
                 throw new IllegalArgumentException(

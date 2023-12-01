@@ -9,17 +9,17 @@ public class Stylish {
     public static String stylish(List<Map<String,Object>> differList) {
         List<String> diffList = new ArrayList<>();
         for (Map<String,Object> node : differList) {
-            Object status = node.get("status");
+            Object type = node.get("type");
             Object key = node.get("key");
             Object value = node.get("value");
-            if (status.equals("UNCHANGED")) {
+            if (type.equals("UNCHANGED")) {
                 diffList.add(String.format("    %s: %s\n", node.get("key"), node.get("value")));
-            } else if (status.equals("UPDATED")) {
+            } else if (type.equals("UPDATED")) {
                 diffList.add(String.format("  - %s: %s\n", node.get("key"), node.get("value")));
                 diffList.add(String.format("  + %s: %s\n", node.get("key"), node.get("updatedValue")));
-            } else if (status.equals("ADDED")) {
+            } else if (type.equals("ADDED")) {
                 diffList.add(String.format("  + %s: %s\n", node.get("key"), node.get("updatedValue")));
-            } else if (status.equals("REMOVED")) {
+            } else if (type.equals("REMOVED")) {
                 diffList.add(String.format("  - %s: %s\n", node.get("key"), node.get("value")));
             } else {
                 throw new IllegalArgumentException(
