@@ -6,7 +6,7 @@ import java.util.Map;
 public class Plain {
 
 
-    public static String plain(List<Map<String,Object>> diffList) {
+    public static String plain(List<Map<String, Object>> diffList) {
         StringBuilder resultStr = new StringBuilder();
 
         for (var node : diffList) {

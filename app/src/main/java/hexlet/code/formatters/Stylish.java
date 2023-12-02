@@ -6,9 +6,9 @@ import java.util.Map;
 
 public class Stylish {
 
-    public static String stylish(List<Map<String,Object>> differList) {
+    public static String stylish(List<Map<String, Object>> differList) {
         List<String> diffList = new ArrayList<>();
-        for (Map<String,Object> node : differList) {
+        for (Map<String, Object> node : differList) {
             Object type = node.get("type");
             Object key = node.get("key");
             Object value = node.get("value");

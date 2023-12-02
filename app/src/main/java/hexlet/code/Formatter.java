@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Formatter {
-    public static String formatter(List<Map<String,Object>> diffList, String format) throws IOException {
+    public static String formatter(List<Map<String, Object>> diffList, String format) throws IOException {
         return switch (format.toLowerCase()) {
             case ("stylish") -> Stylish.stylish(diffList);
             case ("plain") -> Plain.plain(diffList);
