@@ -94,6 +94,12 @@ public class TestDiffer {
         String filePath = "src/test/fixtures/fileNestedResultJson.json";
         String result = Files.lines(getPath(filePath)).reduce("", (a, b) -> a + b + "\n").trim();
         JSONAssert.assertEquals(result, actual, false);
-//        assertEquals(result, actual, "Files did not match");
+    }
+    @Test
+    public void testGenerateJsonJSONAssertManyString() throws Exception {
+        String actual = Differ.generate(filePathNestedJson1, filePathNestedJson2, "json");
+        String filePath = "src/test/fixtures/fileNestedResultJsonManyString.json";
+        String result = Files.lines(getPath(filePath)).reduce("", (a, b) -> a + b + "\n").trim();
+        JSONAssert.assertEquals(result, actual, false);
     }
 }
