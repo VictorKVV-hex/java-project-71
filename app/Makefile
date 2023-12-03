@@ -1,5 +1,5 @@
 run-dist:
-	./build/install/app/bin/app src/test/fixtures/file1.json src/test/fixtures/file2.json
+	./build/install/app/bin/app src/test/fixtures/fileNested1.json src/test/fixtures/fileNested2.json
 
 lint:
 	./gradlew checkstyleMain checkstyleTest

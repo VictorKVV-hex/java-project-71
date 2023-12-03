@@ -26,11 +26,17 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.stephenn:scalatest-json-jsonassert_2.13:0.2.5'
+    implementation 'com.stephenn:scalatest-json-jsonassert_2.13:0.2.5'
+    implementation 'com.stephenn:scalatest-json-jsonassert_2.13:0.2.5'
+    implementation 'com.stephenn:scalatest-json-jsonassert_2.13:0.2.5'
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation 'info.picocli:picocli:4.7.5'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.14.2'
+//    implementation 'com.toomuchcoding.jsonassert:jsonassert:0.6.2'
+    testImplementation 'org.skyscreamer:jsonassert:1.5.1'
 }
 
 test {

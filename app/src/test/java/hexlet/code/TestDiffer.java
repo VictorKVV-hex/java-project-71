@@ -1,14 +1,13 @@
 package hexlet.code;
 
 import org.junit.jupiter.api.Test;
+import org.skyscreamer.jsonassert.JSONAssert;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 
 import static hexlet.code.Differ.getPath;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestDiffer {
@@ -69,14 +68,14 @@ public class TestDiffer {
     @Test
     public void testGeneratePlainJson() throws Exception {
         String actual = Differ.generate(filePathNestedJson1, filePathNestedJson2, "plain");
-        String filePath = "src/test/fixtures/fileResultPlain.json";
+        String filePath = "src/test/fixtures/fileResultPlain.txt";
         String result = Files.lines(getPath(filePath)).reduce("", (a, b) -> a + b + "\n").trim();
         assertEquals(result, actual, "Files did not match");
     }
     @Test
     public void testGeneratePlainYml() throws Exception {
         String actual = Differ.generate(filePathNestedYml1, filePathNestedYml2, "plain");
-        String filePath = "src/test/fixtures/fileResultPlain.json";
+        String filePath = "src/test/fixtures/fileResultPlain.txt";
         String result = Files.lines(getPath(filePath)).reduce("", (a, b) -> a + b + "\n").trim();
         assertEquals(result, actual, "Files did not match");
     }
@@ -84,8 +83,15 @@ public class TestDiffer {
     public void testGenerateJsonJson() throws Exception {
         String actual = Differ.generate(filePathNestedJson1, filePathNestedJson2, "json");
         String filePath = "src/test/fixtures/fileNestedResultJson.json";
-//        String filePath = "src/test/fixtures/fileNestedResultJsonValueMap2.json";
         String result = Files.lines(getPath(filePath)).reduce("", (a, b) -> a + b + "\n").trim();
         assertEquals(result, actual, "Files did not match");
+    }
+    @Test
+    public void testGenerateJsonJSONAssert() throws Exception {
+        String actual = Differ.generate(filePathNestedJson1, filePathNestedJson2, "json");
+        String filePath = "src/test/fixtures/fileNestedResultJson.json";
+        String result = Files.lines(getPath(filePath)).reduce("", (a, b) -> a + b + "\n").trim();
+        JSONAssert.assertEquals(result, actual, false);
+//        assertEquals(result, actual, "Files did not match");
     }
 }

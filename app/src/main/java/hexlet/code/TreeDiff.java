@@ -31,9 +31,9 @@ public class TreeDiff {
                 }
             } else {
                 if (!(map1.containsKey(key))) {
-                    diffList.add(putHm(ADDED, key, null, valueMap2));
+                    diffList.add(putHmAdd(ADDED, key, valueMap2));
                 } else {
-                    diffList.add(putHm(REMOVED, key, valueMap1, valueMap2));
+                    diffList.add(putHmREMOVED(REMOVED, key, valueMap1));
                 }
             }
         }
@@ -45,6 +45,20 @@ public class TreeDiff {
         hM.put("key", key);
         hM.put("value", valueMap1);
         hM.put("updatedValue", valueMap2);
+        return hM;
+    }
+    public static Map<String, Object> putHmAdd(String type, String key, Object valueMap2) {
+        var hM = new LinkedHashMap<String, Object>();
+        hM.put("type", type);
+        hM.put("key", key);
+        hM.put("updatedValue", valueMap2);
+        return hM;
+    }
+    public static Map<String, Object> putHmREMOVED(String type, String key, Object valueMap1) {
+        var hM = new LinkedHashMap<String, Object>();
+        hM.put("type", type);
+        hM.put("key", key);
+        hM.put("value", valueMap1);
         return hM;
     }
 

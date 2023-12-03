@@ -30,8 +30,6 @@ public class Differ {
     public static Path getPath(String filePath) throws Exception {
         Path testFilePath = Paths.get(filePath);
         Path fileName = testFilePath.getFileName();
-        // Формируем абсолютный путь, если filePath будет содержать относительный путь,
-        // то мы всегда будет работать с абсолютным
         Path path = Paths.get(filePath).toAbsolutePath().normalize();
         if (!Files.exists(path)) {
             throw new Exception("File '" + path + "' does not exist");
